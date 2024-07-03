@@ -17,7 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{secrets.MY_GITHUB_TOKEN}}
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -45,3 +46,5 @@ jobs:
           git add .
           git commit -m "Update from GitHub Actions" || true # This will not fail if there's nothing to commit
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
