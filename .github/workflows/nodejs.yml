@@ -46,6 +46,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Push changes
+        if: matrix.node-version == '16.x'
         run: |
           git push origin HEAD:main --tags
 
