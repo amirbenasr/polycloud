@@ -37,6 +37,8 @@ jobs:
       - name: Bump version and Publish to npm
         if: matrix.node-version == '16.x'
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           npm version patch -m "Bump version to %s"
           npm publish
         env:
